@@ -1,0 +1,42 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel id="panel" header="Datos del cliente" footer="Todos los derechos reservados 2020">
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="nombre" value="Nombre: "/>
+                    <p:inputText id="nombre" value="#{inputBean.nombre}" />
+                    
+                    <p:outputLabel for="fecha" value="Fecha; "/>
+                    <p:inputMask id="fecha" value="#{inputBean.fecha}" mask="99/99/9999"/>
+                    
+                    <p:outputLabel for="telefono" value="Teelfono: "/>
+                    <p:inputMask id="telefono" value="#{inputBean.fono}" mask="(999) 999-99999"/>
+                    
+                    <p:commandButton value="Limpiar" type="reset"/>
+                    <p:commandButton value="Enviar" update="display" oncomplete="PF('dlg').show()" />
+
+                </h:panelGrid>
+                <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Datos obtenidos del cliente" showEffect="modal" focus="panel">
+                    <p:panelGrid columns="2" columnClasses="label,value" id="display">
+                        <h:outputText value="Nombre: "/>
+                        <h:outputText id="nomb" value="#{inputBean.nombre}" />
+                        
+                        <h:outputText value="Fecha: "/>
+                        <h:outputText id="fech" value="#{inputBean.fecha}"/>
+                        
+                        <h:outputText value="Telefono: "/>
+                        <h:outputText id="tel" value="#{inputBean.fono}"/>
+                    </p:panelGrid>
+                </p:dialog>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
